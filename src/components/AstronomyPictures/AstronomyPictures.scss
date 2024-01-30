@@ -1,8 +1,24 @@
-.astronomy-picture{
-    display: grid;
-    grid-template-columns: repeat(3, 250px);
-    grid-template-rows: repeat(3, 250px);
-    .astronomy-picture-img{
-        width:100px;
+@import "../../style/helpers/variables.scss";
+
+.astronomy-picture {
+  @include basicBlocksSize;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: auto;
+  grid-auto-flow: row;
+  gap: $paddingSize * 4;
+  justify-content: center;
+  &__wrapper-item {
+    cursor: pointer;
+    .astronomy-picture-img {
+      max-width: 250px;
+      width: 100%;
+      margin-bottom: $paddingSize*2;
+
     }
+    .astronomy-picture-data{
+font-size: $content-size;
+font-weight: $semi-bold;
+    }
+  }
 }

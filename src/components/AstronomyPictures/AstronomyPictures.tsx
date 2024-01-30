@@ -2,12 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchAstronomyPicture } from "../../store/thunk";
 import { ThunkDispatch } from "@reduxjs/toolkit";
-import "./AstronomyPictures.scss";
-import { ASTRONOMY_PICTURE } from "../../types/types";
+import { ISTORE } from "../../types/types";
 import { Preloader } from "../Preloader/Preloader";
+import { useNavigate } from "react-router-dom";
+import "./AstronomyPictures.scss";
 
 export const AstronomyPictures = () => {
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(
       fetchAstronomyPicture(
@@ -17,22 +21,12 @@ export const AstronomyPictures = () => {
   }, []);
 
   const astronomyPictures = useSelector(
-    (store: {
-      astronomyPicture: {
-        astronomyPicture: ASTRONOMY_PICTURE[];
-        loadingStatus: boolean;
-        error: null | {};
-      };
-    }) => store.astronomyPicture.astronomyPicture
+    (store: { astronomyPictures: ISTORE }) =>
+      store.astronomyPictures.astronomyPictures
   );
   const loading = useSelector(
-    (store: {
-      astronomyPicture: {
-        astronomyPicture: ASTRONOMY_PICTURE[];
-        loadingStatus: boolean;
-        error: null | {};
-      };
-    }) => store.astronomyPicture.loadingStatus
+    (store: { astronomyPictures: ISTORE }) =>
+      store.astronomyPictures.loadingStatus
   );
 
   return loading ? (
@@ -44,6 +38,7 @@ export const AstronomyPictures = () => {
           className="astronomy-picture__wrapper-item"
           key={astronomyPicture.date}
           id={astronomyPicture.date}
+          onClick={() => navigate(`/${astronomyPicture.date}`)}
         >
           <img
             src={astronomyPicture.url}

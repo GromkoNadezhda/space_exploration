@@ -1,0 +1,15 @@
+@import "./helpers/variables.scss";
+
+#root {
+  max-width:100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 3rem;
+  background-color: $primary;
+}
+
+.app {
+  color: white;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  text-align: center;
+}

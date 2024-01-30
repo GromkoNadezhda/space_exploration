@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import astronomyPictureReducer  from "./astronomyPictureSlice";
+import astronomyPicturesReducer  from "./astronomyPicturesSlice";
 
 
 export const store= configureStore({
     reducer:{
-        astronomyPicture:astronomyPictureReducer
+        astronomyPictures:astronomyPicturesReducer
     }
 })

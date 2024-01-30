@@ -1,0 +1,18 @@
+@import "../../style/helpers/variables.scss";
+
+.header {
+  @include basicBlocksSize;
+  display: flex;
+  flex-direction: column;
+  min-height: 130px;
+  justify-content: space-between;
+  margin-bottom: $paddingSize * 15;
+  &__title {
+    font-size: $title-size;
+    font-weight: $bold;
+    margin-bottom: $paddingSize * 4;
+  }
+  &__main-part {
+    font-size: $subtitle-size;
+  }
+}
