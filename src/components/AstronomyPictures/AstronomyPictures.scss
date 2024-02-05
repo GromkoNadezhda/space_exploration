@@ -1,24 +1,45 @@
 @import "../../style/helpers/variables.scss";
 
-.astronomy-picture {
+.astronomy-pictures {
   @include basicBlocksSize;
-  display: grid;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: auto;
-  grid-auto-flow: row;
-  gap: $paddingSize * 4;
-  justify-content: center;
-  &__wrapper-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__wrapper-card {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-template-rows: auto;
+    grid-auto-flow: row;
+    gap: $paddingSize * 4;
+    justify-content: center;
+    margin-bottom: $paddingSize * 15;
+    .astronomy-pictures__card {
+      cursor: pointer;
+      .astronomy-pictures-img {
+        @include borderShadow;
+        border-radius: 50%;
+        max-width: 250px;
+        width: 100%;
+        margin-bottom: $paddingSize * 2;
+      }
+      .astronomy-pictures-date {
+        font-size: $content-size;
+        font-weight: $semi-bold;
+      }
+    }
+  }
+  &__button {
+    width: inherit;
+    padding: $paddingSize * 4 $paddingSize * 8;
+    border-radius: $radius;
+    border: 1px solid $blue;
+    background-color: $purple;
+    font-size: $content-size;
+    color: $white;
     cursor: pointer;
-    .astronomy-picture-img {
-      max-width: 250px;
-      width: 100%;
-      margin-bottom: $paddingSize*2;
-
-    }
-    .astronomy-picture-data{
-font-size: $content-size;
-font-weight: $semi-bold;
-    }
+  }
+  &__button:hover {
+    padding: $paddingSize * 6 $paddingSize * 10;
+    background-color: $secondary;
   }
 }

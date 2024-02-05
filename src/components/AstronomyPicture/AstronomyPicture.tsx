@@ -1,14 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./AstronomyPicture.scss";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchAstronomyPicture } from "../../store/thunk";
-import { useParams } from "react-router-dom";
 import { ISTORE } from "../../types/types";
+import { BASIC_BLOCKS_ID } from "../../constants/constants";
+import "./AstronomyPicture.scss";
 
-export const AstronomyPicture = () => {
+export const AstronomyPicture = ({
+  updateHeaderContent,
+  headerContent,
+}: {
+  updateHeaderContent: (id: string) => void;
+  headerContent: {
+    title: string;
+    mainPart: string;
+  };
+}) => {
+  const astronomyPicture = useSelector(
+    (store: ISTORE) => store.astronomyPictures.astronomyPicture
+  );
+
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
+
   const { date } = useParams();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(
@@ -18,18 +35,35 @@ export const AstronomyPicture = () => {
     );
   }, []);
 
-  const astronomyPicture = useSelector(
-    (store: { astronomyPictures: ISTORE }) =>
-      store.astronomyPictures.astronomyPicture
-  );
+  useEffect(() => {
+    updateHeaderContent(BASIC_BLOCKS_ID.astronomyPicture);
+
+    return () => updateHeaderContent(BASIC_BLOCKS_ID.astronomyPicture);
+  }, [headerContent]);
 
   return (
     astronomyPicture && (
       <div className="astronomy-picture">
-        <h2>{astronomyPicture.date}</h2>
-        <img src={astronomyPicture.url} alt={astronomyPicture.title} />
-        <p>{astronomyPicture.title}</p>
-        <p>{astronomyPicture.explanation}</p>
+        <button
+          className="astronomy-picture__button"
+          onClick={() => navigate("/")}
+        >
+          Back to picture selection
+        </button>
+        <div className="astronomy-picture__wrapper-card">
+          <h2 className="astronomy-picture__description">
+            {astronomyPicture.date}
+          </h2>
+          <img
+            src={astronomyPicture.url}
+            alt={astronomyPicture.title}
+            className="astronomy-picture__img"
+          />
+          <p className="astronomy-picture__title">{astronomyPicture.title}</p>
+          <p className="astronomy-picture__description">
+            {astronomyPicture.explanation}
+          </p>
+        </div>
       </div>
     )
   );

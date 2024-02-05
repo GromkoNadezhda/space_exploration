@@ -1,2 +1,6 @@
 @import "./helpers/initial.scss";
 @import "./helpers/variables.scss";
+
+body {
+  background-color: $primary;
+}

@@ -1,16 +1,36 @@
-import { useState } from "react";
-import { HeaderContent } from "../../constants/constants";
+import { useEffect, useState } from "react";
+import { FiltrationInputs } from "../FiltrationInputs/FiltrationInputs";
+import { Sorting } from "../Sorting/Sorting";
 import "./Header.scss";
 
-export const Header = () => {
-  const [contentPart, setContentPart] = useState(
-    HeaderContent.allAstronomyPictures
-  );
+export const Header = ({
+  headerContent,
+}: {
+  headerContent: {
+    id: string;
+    title: string;
+    mainPart: string;
+  };
+}) => {
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    handleShowFiltration();
+  }, [headerContent]);
+
+  const handleShowFiltration = () =>
+    headerContent.id === "primary" ? setShow(true) : setShow(false);
 
   return (
     <div className="header">
-      <h1 className="header__title">{contentPart.title}</h1>
-      <p className="header__main-part">{contentPart.mainPart}</p>
+      <h1 className="header__title">{headerContent.title}</h1>
+      <p className="header__main-part">{headerContent.mainPart}</p>
+      {show && (
+        <div className="header__filtration">
+          <Sorting />
+          <FiltrationInputs />
+        </div>
+      )}
     </div>
   );
 };

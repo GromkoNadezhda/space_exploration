@@ -1,0 +1,44 @@
+@import "../../style/helpers/variables.scss";
+
+.filtration {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+
+  &__wrapper-button {
+    align-self: flex-end;
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
+    margin-bottom: $paddingSize * 2;
+    .filtration__button-active {
+      background-color: $purple;
+      width: 90px;
+      padding: $paddingSize * 2;
+      border-radius: $radius;
+      font-size: $content-size;
+      border: none;
+    }
+    .filtration__button-active {
+      @include button;
+      background-color: $purple;
+    }
+    .filtration__button {
+      @include button;
+      background-color: $primary;
+    }
+  }
+  .filtration__button:hover {
+    background-color: $secondary;
+  }
+  &__input {
+    @include input;
+    height: 36px;
+    border-bottom: 2px solid $blue;
+    padding: $paddingSize * 2;
+  }
+  &__input:hover {
+    background-color: $purple;
+    border-radius: $radius;
+  }
+}

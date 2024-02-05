@@ -1,0 +1,47 @@
+@import "../../style/helpers/variables.scss";
+
+.astronomy-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__button {
+    width: inherit;
+    margin-bottom: $paddingSize * 15;
+    padding: $paddingSize * 4 $paddingSize * 8;
+    border-radius: $radius;
+    border: 1px solid $blue;
+    background-color: $purple;
+    font-size: $content-size;
+    color: $white;
+    cursor: pointer;
+  }
+  &__button:hover {
+    background-color: $secondary;
+  }
+  &__wrapper-card {
+    display: flex;
+    flex-direction: column;
+    .astronomy-picture__title {
+      font-size: $subtitle-size;
+      font-weight: $semi-bold;
+      margin-bottom: $paddingSize * 4;
+    }
+    .astronomy-picture__img {
+      @include borderShadow;
+      max-width: 500px;
+      width: 100%;
+      margin-bottom: $paddingSize * 10;
+      align-self: center;
+      border-top-left-radius: 100px;
+      border-top-right-radius: 100px;
+      border-bottom-left-radius: 100px;
+    }
+    .astronomy-picture__description {
+      font-size: $content-size;
+      line-height: 20px;
+      align-self: center;
+      color: $pink;
+      margin-bottom: $paddingSize;
+    }
+  }
+}

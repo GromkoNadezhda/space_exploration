@@ -1,0 +1,22 @@
+@import "../../style/helpers/variables.scss";
+
+.sorting {
+  display: flex;
+  max-width: 120px;
+  width: 100%;
+  justify-content: space-between;
+  &__icon {
+    transform: rotate(90deg);
+    border-radius: $radius;
+    border: 1px solid $blue;
+    padding: $paddingSize * 2;
+    cursor: pointer;
+  }
+  &__icon:hover {
+    background-color: $purple;
+  }
+  &__text {
+    align-self: center;
+    font-size: $content-size;
+  }
+}

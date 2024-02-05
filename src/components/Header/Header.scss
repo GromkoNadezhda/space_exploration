@@ -4,9 +4,8 @@
   @include basicBlocksSize;
   display: flex;
   flex-direction: column;
-  min-height: 130px;
+  min-height: fit-content;
   justify-content: space-between;
-  margin-bottom: $paddingSize * 15;
   &__title {
     font-size: $title-size;
     font-weight: $bold;
@@ -14,5 +13,14 @@
   }
   &__main-part {
     font-size: $subtitle-size;
+    margin-bottom: $paddingSize * 10;
+  }
+  &__filtration {
+    display: flex;
+    max-width: inherit;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $paddingSize * 15;
   }
 }
