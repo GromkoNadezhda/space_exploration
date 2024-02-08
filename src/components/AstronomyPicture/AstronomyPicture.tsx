@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchAstronomyPicture } from "../../store/thunk";
-import { ISTORE } from "../../types/types";
-import { BASIC_BLOCKS_ID } from "../../constants/constants";
+import { fetchAstronomyPicture } from "@store/thunk";
+import { ISTORE } from "@types";
+import { BASIC_BLOCKS_ID } from "@constants/constants";
 import "./AstronomyPicture.scss";
 
 export const AstronomyPicture = ({

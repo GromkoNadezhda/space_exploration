@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { AstronomyPictures } from "./components/AstronomyPictures/AstronomyPictures";
-import { Layout } from "./components/Layout/Layout";
-import { AstronomyPicture } from "./components/AstronomyPicture/AstronomyPicture";
+import { Layout } from "@components/Layout/Layout";
+import { AstronomyPictures } from "@components/AstronomyPictures/AstronomyPictures";
+import { AstronomyPicture } from "@components/AstronomyPicture/AstronomyPicture";
 import {
   BASIC_BLOCKS_ID,
   BASIC_BLOCKS_ID_LIST,
   HeaderContent,
-} from "./constants/constants";
-import { NotFound } from "./components/NotFound/NotFound";
-import "./style/App.scss";
+} from "@constants/constants";
+
+import { NotFound } from "@components/NotFound/NotFound";
+import "@style/App.scss";
 
 const App = () => {
   const [headerContent, setHeaderContent] = useState<{

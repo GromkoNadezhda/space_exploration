@@ -1,4 +1,4 @@
-import { IASTRONOMY_PICTURE, TFILTERING_VALUES } from "../types/types";
+import { IASTRONOMY_PICTURE, TFILTERING_VALUES } from "@types";
 
 export const filteredAstronomyPictures = (
   filteringValues: TFILTERING_VALUES,

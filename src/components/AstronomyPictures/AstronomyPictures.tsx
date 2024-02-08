@@ -2,15 +2,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { fetchAstronomyPicture } from "../../store/thunk";
-import { sortedAstronomyPictures } from "../../store/selectors";
-import { addAstronomyPictures } from "../../store/astronomyPicturesSlice";
-import { ISTORE } from "../../types/types";
-import { Preloader } from "../Preloader/Preloader";
+import { fetchAstronomyPicture } from "@store/thunk";
+import { sortedAstronomyPictures } from "@store/selectors";
+import { addAstronomyPictures } from "@store/astronomyPicturesSlice";
+import { ISTORE } from "@types";
+import { Preloader } from "@components/Preloader/Preloader";
 import {
   BASIC_BLOCKS_ID,
   RENDERING_ASTRONOMY_PICTURES_BUTTON,
-} from "../../constants/constants";
+} from "@constants/constants";
 import "./AstronomyPictures.scss";
 
 export const AstronomyPictures = ({

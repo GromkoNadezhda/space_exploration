@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { FiltrationInputs } from "../FiltrationInputs/FiltrationInputs";
-import { Sorting } from "../Sorting/Sorting";
+import { FiltrationInputs } from "@components/FiltrationInputs/FiltrationInputs";
+import { Sorting } from "@components/Sorting/Sorting";
 import "./Header.scss";
 
 export const Header = ({

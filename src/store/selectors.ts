@@ -1,6 +1,6 @@
 import { createSelector } from "@reduxjs/toolkit";
-import { filteredAstronomyPictures, sortAstronomyPictures } from "./helpers";
-import { ISTORE } from "../types/types";
+import { filteredAstronomyPictures, sortAstronomyPictures } from "@store/helpers";
+import { ISTORE } from "@types";
 
 const selectAllAstronomyPictures = (state: ISTORE) =>
   state.astronomyPictures.astronomyPicturesToShow;

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAstronomyPicture } from "./thunk";
-import { IASTRONOMY_PICTURE, TFILTERING_VALUES } from "../types/types";
-import { RENDERING_ASTRONOMY_PICTURES_BUTTON } from "../constants/constants";
+import { IASTRONOMY_PICTURE, TFILTERING_VALUES } from "@types";
+import { RENDERING_ASTRONOMY_PICTURES_BUTTON } from "@constants/constants";
 
 const INITIAL_STATE: {
   astronomyPictures: IASTRONOMY_PICTURE[];

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addFilteringValues } from "../../store/astronomyPicturesSlice";
+import { addFilteringValues } from "@store/astronomyPicturesSlice";
 import {
   BUTTON_THEME,
   FILTRATION_TITLE,
   FILTRATION_TITLE_LIST,
-} from "../../constants/constants";
-import { TFILTERING_VALUES } from "../../types/types";
+} from "@constants/constants";
+import { TFILTERING_VALUES } from "@types";
 import "./FiltrationInputs.scss";
 
 const INITIAL_STATE = {
