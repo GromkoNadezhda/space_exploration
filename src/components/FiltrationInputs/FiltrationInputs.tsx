@@ -6,7 +6,7 @@ import {
   FILTRATION_TITLE,
   FILTRATION_TITLE_LIST,
 } from "@constants/constants";
-import { TFILTERING_VALUES } from "@types";
+import { IFILTERING_VALUES } from "@types";
 import "./FiltrationInputs.scss";
 
 const INITIAL_STATE = {
@@ -22,7 +22,7 @@ export const FiltrationInputs = () => {
   const [selectInput, setSelectInput] = useState(INITIAL_STATE.selectInput);
   const [buttonTheme, setButtonTheme] = useState(INITIAL_STATE.buttonTheme);
   const [inputValue, setInputValue] = useState<
-    | TFILTERING_VALUES
+    | IFILTERING_VALUES
     | {
         [key: string]: string;
       }
@@ -39,7 +39,7 @@ export const FiltrationInputs = () => {
     setInputValue({ [event.target.id]: event.target.value });
 
   const updateFilteringValue = () =>
-    dispatch(addFilteringValues(inputValue as TFILTERING_VALUES));
+    dispatch(addFilteringValues(inputValue as IFILTERING_VALUES));
 
   const handleChangeTheme = (id: string) => {
     id !== FILTRATION_TITLE.DATE

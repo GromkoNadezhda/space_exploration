@@ -1,12 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAstronomyPicture } from "./thunk";
-import { IASTRONOMY_PICTURE, TFILTERING_VALUES } from "@types";
+import { IASTRONOMY_PICTURE, IFILTERING_VALUES } from "@types";
 import { RENDERING_ASTRONOMY_PICTURES_BUTTON } from "@constants/constants";
 
 const INITIAL_STATE: {
   astronomyPictures: IASTRONOMY_PICTURE[];
   astronomyPicture: IASTRONOMY_PICTURE | null;
-  filteringValues: TFILTERING_VALUES | null;
+  filteringValues: IFILTERING_VALUES | null;
   sortingType: number;
   loadingStatus: boolean;
   error: {} | null;

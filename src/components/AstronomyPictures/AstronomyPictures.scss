@@ -5,6 +5,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  &__filtration {
+    display: flex;
+    max-width: inherit;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $paddingSize * 15;
+  }
   &__wrapper-card {
     display: grid;
     grid-template-columns: repeat(3, auto);

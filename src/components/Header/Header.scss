@@ -15,12 +15,4 @@
     font-size: $subtitle-size;
     margin-bottom: $paddingSize * 10;
   }
-  &__filtration {
-    display: flex;
-    max-width: inherit;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: $paddingSize * 15;
-  }
 }

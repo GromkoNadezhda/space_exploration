@@ -1,11 +1,10 @@
 export enum BASIC_BLOCKS_ID {
   allAstronomyPictures = "allAstronomyPictures",
   astronomyPicture = "astronomyPicture",
+  otherPages="otherPages"
 }
 
-export const BASIC_BLOCKS_ID_LIST = Object.values(BASIC_BLOCKS_ID);
-
-export const HeaderContent = {
+export const HEADER_CONTENT = {
   [BASIC_BLOCKS_ID.allAstronomyPictures]: {
     id: "primary",
     title: "Astronomy Picture of the Day Archive",
@@ -18,7 +17,7 @@ export const HeaderContent = {
     mainPart:
       "Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer.",
   },
-  otherPages: { id: "others", title: "", mainPart: "" },
+  [BASIC_BLOCKS_ID.otherPages]: { id: "others", title: "", mainPart: "" },
 };
 
 export enum BUTTON_THEME {

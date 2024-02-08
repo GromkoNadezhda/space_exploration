@@ -1,18 +1,9 @@
+import { ReactNode } from "react";
 import { Header } from "@components/Header/Header";
 
-export const Layout = ({
-  children,
-  headerContent,
-}: {
-  children: React.ReactNode;
-  headerContent: {
-    title: string;
-    mainPart: string;
-    id: string;
-  };
-}) => (
+export const Layout = ({ children }: { children: ReactNode }) => (
   <>
-    <Header headerContent={headerContent} />
+    <Header />
     {children}
   </>
 );

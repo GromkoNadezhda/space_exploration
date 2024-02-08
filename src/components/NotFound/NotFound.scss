@@ -1,0 +1,15 @@
+@import "@style/helpers/variables.scss";
+
+.not-found {
+  font-size: 45px;
+  &__button {
+    @include button;
+    width: 140px;
+    background-color: $primary;
+    color: $blue;
+  }
+  &__button:hover {
+    background-color: $blue;
+    color: $primary;
+  }
+}

@@ -7,7 +7,7 @@ export interface IASTRONOMY_PICTURE {
   url: string;
 }
 
-export interface TFILTERING_VALUES {
+export interface IFILTERING_VALUES {
   [FILTRATION_TITLE.DATE]: string;
   [FILTRATION_TITLE.TITLE]: string;
 }
@@ -17,9 +17,15 @@ export interface ISTORE {
     astronomyPictures: IASTRONOMY_PICTURE[];
     astronomyPicturesToShow: IASTRONOMY_PICTURE[];
     astronomyPicture: IASTRONOMY_PICTURE;
-    filteringValues: TFILTERING_VALUES;
+    filteringValues: IFILTERING_VALUES;
     sortingType: number;
     loadingStatus: boolean;
     error: {};
   };
+}
+
+export interface IHEADER_CONTENT {
+  id: string;
+  title: string;
+  mainPart: string;
 }

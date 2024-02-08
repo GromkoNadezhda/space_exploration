@@ -3,20 +3,12 @@ import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchAstronomyPicture } from "@store/thunk";
+import { updateHeaderContent } from "@store/appSettings";
 import { ISTORE } from "@types";
 import { BASIC_BLOCKS_ID } from "@constants/constants";
 import "./AstronomyPicture.scss";
 
-export const AstronomyPicture = ({
-  updateHeaderContent,
-  headerContent,
-}: {
-  updateHeaderContent: (id: string) => void;
-  headerContent: {
-    title: string;
-    mainPart: string;
-  };
-}) => {
+export const AstronomyPicture = () => {
   const astronomyPicture = useSelector(
     (store: ISTORE) => store.astronomyPictures.astronomyPicture
   );
@@ -33,13 +25,8 @@ export const AstronomyPicture = ({
         ` https://api.nasa.gov/planetary/apod?api_key=tH8n33Z1IX9p6dFVlvL1RvaYg8xhjFMQSewTNQYY&date=${date}`
       )
     );
+    dispatch(updateHeaderContent(BASIC_BLOCKS_ID.astronomyPicture));
   }, []);
-
-  useEffect(() => {
-    updateHeaderContent(BASIC_BLOCKS_ID.astronomyPicture);
-
-    return () => updateHeaderContent(BASIC_BLOCKS_ID.astronomyPicture);
-  }, [headerContent]);
 
   return (
     astronomyPicture && (

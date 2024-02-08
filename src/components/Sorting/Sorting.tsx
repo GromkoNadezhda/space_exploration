@@ -1,5 +1,5 @@
-import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
 import { addSortingType } from "@store/astronomyPicturesSlice";
 import "./Sorting.scss";
