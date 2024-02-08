@@ -57,6 +57,7 @@ const App = () => {
                 <NotFound
                   updateHeaderContent={updateHeaderContent}
                   headerContent={headerContent}
+                  error="Сheck the url"
                 />
               }
             />

@@ -5,15 +5,13 @@ const SET_ASTRONOMY_PICTURE = "games/fetchAstronomyPicture";
 
 export const fetchAstronomyPicture = createAsyncThunk(
   SET_ASTRONOMY_PICTURE,
-  async (apiUrl: string) => {
+  async (apiUrl: string, {rejectWithValue}) => {
     try {
       const { data } = await axios.get(apiUrl);
 
       return data;
-    } catch (error) {
-      console.log(error);
-
-      // return rejectedWithValue(error.message)
+    } catch (error:any) {
+         return rejectWithValue(error.message)
     }
   }
 );

@@ -49,7 +49,7 @@ const astronomyPicturesSlice = createSlice({
         state.astronomyPicturesToShow = state.astronomyPictures;
       } else
         state.astronomyPicturesToShow = action.payload.astronomyPictures.filter(
-          (element, index) => index < 9
+          (_, index) => index < 9
         );
     },
     addAstronomyPicture(state, action) {
@@ -63,23 +63,22 @@ const astronomyPicturesSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchAstronomyPicture.pending, (state) => {
+      state.loadingStatus = true;
+      state.error = null;
+    });
     builder.addCase(fetchAstronomyPicture.fulfilled, (state, action) => {
       (state.loadingStatus = false), (state.error = null);
 
       if (Array.isArray(action.payload)) {
         state.astronomyPictures = action.payload;
         state.astronomyPicturesToShow = action.payload.filter(
-          (element, index) => index < 9
+          (_, index) => index < 9
         );
       } else if (!Array.isArray(action.payload)) {
         state.astronomyPicture = action.payload;
       }
     });
-    builder.addCase(fetchAstronomyPicture.pending, (state) => {
-      state.loadingStatus = true;
-      state.error = null;
-    });
-
     builder.addCase(fetchAstronomyPicture.rejected, (state, action) => {
       state.loadingStatus = false;
       state.error = action.error;

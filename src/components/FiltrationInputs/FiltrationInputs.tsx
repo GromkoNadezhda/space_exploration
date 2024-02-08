@@ -78,6 +78,7 @@ export const FiltrationInputs = () => {
           value={inputValue?.Date || ""}
           id={FILTRATION_TITLE.DATE}
           type="date"
+          min="2024-01-01"
           onChange={updateInputValue}
         />
       ) : (
