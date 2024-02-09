@@ -6,11 +6,13 @@
   flex-direction: column;
   min-height: fit-content;
   justify-content: space-between;
+
   &__title {
     font-size: $title-size;
     font-weight: $bold;
     margin-bottom: $paddingSize * 4;
   }
+  
   &__main-part {
     font-size: $subtitle-size;
     margin-bottom: $paddingSize * 10;

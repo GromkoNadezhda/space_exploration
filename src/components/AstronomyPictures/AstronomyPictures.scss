@@ -5,6 +5,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   &__filtration {
     display: flex;
     max-width: inherit;
@@ -13,6 +14,7 @@
     align-items: center;
     margin-bottom: $paddingSize * 15;
   }
+
   &__wrapper-card {
     display: grid;
     grid-template-columns: repeat(3, auto);
@@ -36,6 +38,7 @@
       }
     }
   }
+
   &__button {
     width: inherit;
     padding: $paddingSize * 4 $paddingSize * 8;
@@ -46,6 +49,7 @@
     color: $white;
     cursor: pointer;
   }
+
   &__button:hover {
     padding: $paddingSize * 6 $paddingSize * 10;
     background-color: $secondary;

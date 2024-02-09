@@ -1,7 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAstronomyPicture } from "./thunk";
-import { IASTRONOMY_PICTURE, IFILTERING_VALUES } from "@types";
-import { RENDERING_ASTRONOMY_PICTURES_BUTTON } from "@constants/constants";
+import { IASTRONOMY_PICTURE, IFILTERING_VALUES, ISTORE } from "@types";
+import {
+  ITEMS_COUNT,
+  RENDERING_ASTRONOMY_PICTURES_BUTTON,
+} from "@constants/constants";
 
 const INITIAL_STATE: {
   astronomyPictures: IASTRONOMY_PICTURE[];
@@ -72,8 +75,8 @@ const astronomyPicturesSlice = createSlice({
 
       if (Array.isArray(action.payload)) {
         state.astronomyPictures = action.payload;
-        state.astronomyPicturesToShow = action.payload.filter(
-          (_, index) => index < 9
+        state.astronomyPicturesToShow = action.payload.slice(
+          ITEMS_COUNT.MIN_ITEMS_COUNT
         );
       } else if (!Array.isArray(action.payload)) {
         state.astronomyPicture = action.payload;

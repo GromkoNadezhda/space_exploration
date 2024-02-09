@@ -36,3 +36,7 @@ export const RENDERING_ASTRONOMY_PICTURES_BUTTON = {
   show: { content: "Show more", id: "show" },
   hidden: { content: "Show only nine days", id: "hidden" },
 };
+
+export enum ITEMS_COUNT{
+  MIN_ITEMS_COUNT=9
+}

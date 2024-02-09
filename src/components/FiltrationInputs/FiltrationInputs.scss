@@ -28,15 +28,18 @@
       background-color: $primary;
     }
   }
-  .filtration__button:hover {
+
+  &__button:hover {
     background-color: $secondary;
   }
+
   &__input {
     @include input;
     height: 36px;
     border-bottom: 2px solid $blue;
     padding: $paddingSize * 2;
   }
+
   &__input:hover {
     background-color: $purple;
     border-radius: $radius;
