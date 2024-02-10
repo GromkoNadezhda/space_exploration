@@ -1,7 +1,7 @@
-import { IASTRONOMY_PICTURE, IFILTERING_VALUES } from "@types";
+import { IASTRONOMY_PICTURE, TFILTERING_VALUES } from "@types";
 
 export const filteredAstronomyPictures = (
-  filteringValues: IFILTERING_VALUES,
+  filteringValues: TFILTERING_VALUES,
   astronomyPictures: IASTRONOMY_PICTURE[]
 ) => {
   const { Date, Title } = filteringValues;

@@ -18,15 +18,15 @@ $paddingSize: 4px;
 $marginSize: 8px;
 
 //mixins
-@mixin basicBlocksSize {
+%basicBlocksSize {
   max-width: 800px;
   margin: 0 auto;
 }
-@mixin borderShadow {
+%borderShadow {
   // border-radius: $radius;
   box-shadow: 0px 0px 70px 5px $purple;
 }
-@mixin button {
+%button {
   width: 90px;
   padding: $paddingSize * 2;
   border-radius: $radius;
@@ -35,7 +35,7 @@ $marginSize: 8px;
   color: $white;
   cursor: pointer;
 }
-@mixin input {
+%input {
   border: none;
   outline: 0;
   background-color: inherit;

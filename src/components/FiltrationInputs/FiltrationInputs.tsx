@@ -5,8 +5,9 @@ import {
   BUTTON_THEME,
   FILTRATION_TITLE,
   FILTRATION_TITLE_LIST,
+  INPUT_DATA,
 } from "@constants/constants";
-import { IFILTERING_VALUES } from "@types";
+import { TFILTERING_VALUES } from "@types";
 import "./FiltrationInputs.scss";
 
 const INITIAL_STATE = {
@@ -20,9 +21,11 @@ const INITIAL_STATE = {
 
 export const FiltrationInputs = () => {
   const [selectInput, setSelectInput] = useState(INITIAL_STATE.selectInput);
-  const [buttonTheme, setButtonTheme] = useState(INITIAL_STATE.buttonTheme);
+  const [buttonTheme, setButtonTheme] = useState<{ [key: string]: string }>(
+    INITIAL_STATE.buttonTheme
+  );
   const [inputValue, setInputValue] = useState<
-    | IFILTERING_VALUES
+    | TFILTERING_VALUES
     | {
         [key: string]: string;
       }
@@ -39,20 +42,21 @@ export const FiltrationInputs = () => {
     setInputValue({ [event.target.id]: event.target.value });
 
   const updateFilteringValue = () =>
-    dispatch(addFilteringValues(inputValue as IFILTERING_VALUES));
+    dispatch(addFilteringValues(inputValue as TFILTERING_VALUES));
 
-  const handleChangeTheme = (id: string) => {
-    id !== FILTRATION_TITLE.DATE
-      ? setButtonTheme({
-          [FILTRATION_TITLE.DATE]: BUTTON_THEME.unactive,
-          [FILTRATION_TITLE.TITLE]: BUTTON_THEME.active,
-        })
-      : setButtonTheme({
-          [FILTRATION_TITLE.DATE]: BUTTON_THEME.active,
-          [FILTRATION_TITLE.TITLE]: BUTTON_THEME.unactive,
-        });
+  const handleChangeTheme = (
+    activeId: FILTRATION_TITLE.DATE | FILTRATION_TITLE.TITLE,
+    unactiveId: FILTRATION_TITLE.DATE | FILTRATION_TITLE.TITLE
+  ) => {
+    if (activeId !== unactiveId) {
+      
+      setButtonTheme({
+        [activeId]: BUTTON_THEME.active,
+        [unactiveId]: BUTTON_THEME.unactive,
+      });
 
-    setInputValue(null);
+      setInputValue(null);
+    }
   };
 
   return (
@@ -64,32 +68,25 @@ export const FiltrationInputs = () => {
             className={buttonTheme[filtrationTitle]}
             id={filtrationTitle}
             onClick={() => {
+              // setButtonTheme({
+              //   ...buttonTheme,
+              // })
               setSelectInput(filtrationTitle),
-                handleChangeTheme(filtrationTitle);
+                handleChangeTheme(filtrationTitle, selectInput);
             }}
           >
             {filtrationTitle}
           </button>
         ))}
       </div>
-      {selectInput === FILTRATION_TITLE.DATE ? (
-        <input
-          className="filtration__input"
-          value={inputValue?.Date || ""}
-          id={FILTRATION_TITLE.DATE}
-          type="date"
-          min="2024-01-01"
-          onChange={updateInputValue}
-        />
-      ) : (
-        <input
-          className="filtration__input"
-          value={inputValue?.Title || ""}
-          id={FILTRATION_TITLE.TITLE}
-          type="text"
-          onChange={updateInputValue}
-        />
-      )}
+      <input
+        className="filtration__input"
+        value={inputValue !== null ? inputValue[selectInput] : ""}
+        id={INPUT_DATA[selectInput].id}
+        type={INPUT_DATA[selectInput].type}
+        min={INPUT_DATA[selectInput].type}
+        onChange={updateInputValue}
+      />
     </div>
   );
 };

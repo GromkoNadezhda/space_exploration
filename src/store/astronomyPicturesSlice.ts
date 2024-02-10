@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAstronomyPicture } from "./thunk";
-import { IASTRONOMY_PICTURE, IFILTERING_VALUES, ISTORE } from "@types";
+import { IASTRONOMY_PICTURE, TFILTERING_VALUES } from "@types";
 import {
   ITEMS_COUNT,
-  RENDERING_ASTRONOMY_PICTURES_BUTTON,
 } from "@constants/constants";
 
 const INITIAL_STATE: {
   astronomyPictures: IASTRONOMY_PICTURE[];
   astronomyPicture: IASTRONOMY_PICTURE | null;
-  filteringValues: IFILTERING_VALUES | null;
+  filteringValues: TFILTERING_VALUES | null;
   sortingType: number;
   loadingStatus: boolean;
   error: {} | null;
@@ -17,7 +16,7 @@ const INITIAL_STATE: {
   astronomyPictures: [],
   astronomyPicture: null,
   filteringValues: null,
-  sortingType: 0,
+  sortingType: 1,
   loadingStatus: false,
   error: null,
 };
@@ -35,25 +34,13 @@ const astronomyPicturesSlice = createSlice({
   },
 
   reducers: {
-    addAstronomyPictures(
-      state,
-      action: {
-        type: string;
-        payload: {
-          astronomyPictures: IASTRONOMY_PICTURE[];
-          content: { content: string; id: string };
-        };
-      }
-    ) {
-      if (
-        action.payload.content.id ===
-        RENDERING_ASTRONOMY_PICTURES_BUTTON.show.id
-      ) {
-        state.astronomyPicturesToShow = state.astronomyPictures;
-      } else
-        state.astronomyPicturesToShow = action.payload.astronomyPictures.filter(
-          (_, index) => index < 9
-        );
+    addAstronomyPictures(state, action) {
+      action.payload
+        ? (state.astronomyPicturesToShow = state.astronomyPictures)
+        : (state.astronomyPicturesToShow =
+            state.astronomyPictures.slice(
+              ITEMS_COUNT.MIN_ITEMS_COUNT
+            ));
     },
     addAstronomyPicture(state, action) {
       state.astronomyPicture = action.payload;
@@ -61,7 +48,7 @@ const astronomyPicturesSlice = createSlice({
     addFilteringValues(state, action) {
       state.filteringValues = action.payload;
     },
-    addSortingType(state, action) {
+    updateSortingType(state, action) {
       state.sortingType = action.payload;
     },
   },
@@ -72,7 +59,6 @@ const astronomyPicturesSlice = createSlice({
     });
     builder.addCase(fetchAstronomyPicture.fulfilled, (state, action) => {
       (state.loadingStatus = false), (state.error = null);
-
       if (Array.isArray(action.payload)) {
         state.astronomyPictures = action.payload;
         state.astronomyPicturesToShow = action.payload.slice(
@@ -81,7 +67,8 @@ const astronomyPicturesSlice = createSlice({
       } else if (!Array.isArray(action.payload)) {
         state.astronomyPicture = action.payload;
       }
-    });
+    }
+    );
     builder.addCase(fetchAstronomyPicture.rejected, (state, action) => {
       state.loadingStatus = false;
       state.error = action.error;
@@ -93,6 +80,6 @@ export const {
   addAstronomyPictures,
   addAstronomyPicture,
   addFilteringValues,
-  addSortingType,
+  updateSortingType,
 } = astronomyPicturesSlice.actions;
 export default astronomyPicturesSlice.reducer;

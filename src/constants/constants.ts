@@ -1,7 +1,7 @@
 export enum BASIC_BLOCKS_ID {
   allAstronomyPictures = "allAstronomyPictures",
   astronomyPicture = "astronomyPicture",
-  otherPages="otherPages"
+  otherPages = "otherPages",
 }
 
 export const HEADER_CONTENT = {
@@ -32,11 +32,26 @@ export enum FILTRATION_TITLE {
 
 export const FILTRATION_TITLE_LIST = Object.values(FILTRATION_TITLE);
 
-export const RENDERING_ASTRONOMY_PICTURES_BUTTON = {
-  show: { content: "Show more", id: "show" },
-  hidden: { content: "Show only nine days", id: "hidden" },
+export const INPUT_DATA = {
+  [FILTRATION_TITLE.DATE]: {
+    id: "Date",
+    min: "2024-01-01",
+    type: "date",
+  },
+  [FILTRATION_TITLE.TITLE]: {
+    id: "Title",
+    min: undefined,
+    type: "text",
+  },
 };
 
-export enum ITEMS_COUNT{
-  MIN_ITEMS_COUNT=9
+export const INPUT_DATA_LIST = Object.values(INPUT_DATA);
+
+export enum RENDERING_ASTRONOMY_PICTURES_BUTTON {
+  SHOW_ALL = "Show more",
+  SHOW_MIN = "Show only nine days",
+}
+
+export enum ITEMS_COUNT {
+  MIN_ITEMS_COUNT = -9,
 }

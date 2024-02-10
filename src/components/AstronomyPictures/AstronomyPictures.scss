@@ -1,7 +1,7 @@
 @import "../../style/helpers/variables.scss";
 
 .astronomy-pictures {
-  @include basicBlocksSize;
+  @extend %basicBlocksSize;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,7 +26,7 @@
     .astronomy-pictures__card {
       cursor: pointer;
       .astronomy-pictures-img {
-        @include borderShadow;
+        @extend %borderShadow;
         border-radius: 50%;
         max-width: 250px;
         width: 100%;

@@ -30,7 +30,7 @@
       margin-bottom: $paddingSize * 4;
     }
     .astronomy-picture__img {
-      @include borderShadow;
+      @extend %borderShadow;
       max-width: 500px;
       width: 100%;
       margin-bottom: $paddingSize * 10;

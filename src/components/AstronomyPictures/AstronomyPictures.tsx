@@ -2,30 +2,28 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
+import { CircularProgress } from "@mui/material";
 import { fetchAstronomyPicture } from "@store/thunk";
 import { addAstronomyPictures } from "@store/astronomyPicturesSlice";
 import { updateHeaderContent } from "@store/appSettings";
-import { sortedAstronomyPictures } from "@store/selectors";
-import { ISTORE } from "@types";
+import { selectLoadingStatus, sortedAstronomyPictures } from "@store/selectors";
 import {
   BASIC_BLOCKS_ID,
   RENDERING_ASTRONOMY_PICTURES_BUTTON,
 } from "@constants/constants";
-import { Preloader } from "@components/Preloader/Preloader";
+import { IASTRONOMY_PICTURE } from "@types";
 import { FiltrationInputs } from "@components/FiltrationInputs/FiltrationInputs";
 import { Sorting } from "@components/Sorting/Sorting";
 import "./AstronomyPictures.scss";
 
 export const AstronomyPictures = () => {
-  const astronomyPictures = useSelector(sortedAstronomyPictures);
-  const loading = useSelector(
-    (store: ISTORE) => store.astronomyPictures.loadingStatus
+  const astronomyPictures: IASTRONOMY_PICTURE[] = useSelector(
+    sortedAstronomyPictures
   );
+  const loading = useSelector(selectLoadingStatus);
 
-  const [renderingAstronomyPictures, setRenderingAstronomyPictures] = useState({
-    astronomyPictures: astronomyPictures,
-    content: RENDERING_ASTRONOMY_PICTURES_BUTTON.show,
-  });
+  const [renderingAllAstronomyPictures, setRenderingAllAstronomyPictures] =
+    useState(true);
 
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
@@ -41,19 +39,8 @@ export const AstronomyPictures = () => {
     dispatch(updateHeaderContent(BASIC_BLOCKS_ID.allAstronomyPictures));
   }, []);
 
-  const updsteRenderingAstronomyPictures = (id: string) =>
-    id === RENDERING_ASTRONOMY_PICTURES_BUTTON.show.id
-      ? setRenderingAstronomyPictures({
-          ...renderingAstronomyPictures,
-          content: RENDERING_ASTRONOMY_PICTURES_BUTTON.hidden,
-        })
-      : setRenderingAstronomyPictures({
-          ...renderingAstronomyPictures,
-          content: RENDERING_ASTRONOMY_PICTURES_BUTTON.show,
-        });
-
   return loading ? (
-    <Preloader />
+    <CircularProgress />
   ) : (
     <div className="astronomy-pictures">
       <div className="astronomy-pictures__filtration">
@@ -61,34 +48,29 @@ export const AstronomyPictures = () => {
         <FiltrationInputs />
       </div>
       <div className="astronomy-pictures__wrapper-card">
-        {astronomyPictures.map((astronomyPicture) => (
+        {astronomyPictures.map(({ date, url, title }) => (
           <div
             className="astronomy-pictures__card"
-            key={astronomyPicture.date}
-            id={astronomyPicture.date}
-            onClick={() => navigate(`/${astronomyPicture.date}`)}
+            key={date}
+            id={date}
+            onClick={() => navigate(`/${date}`)}
           >
-            <img
-              src={astronomyPicture.url}
-              alt={astronomyPicture.title}
-              className="astronomy-pictures-img"
-            />
-            <p className="astronomy-pictures-date">{astronomyPicture.date}</p>
-            <p>{astronomyPicture.title}</p>
+            <img src={url} alt={title} className="astronomy-pictures-img" />
+            <p className="astronomy-pictures-date">{date}</p>
+            <p>{title}</p>
           </div>
         ))}
       </div>
       <button
-        id={renderingAstronomyPictures.content.id}
         className="astronomy-pictures__button"
         onClick={() => {
-          dispatch(addAstronomyPictures(renderingAstronomyPictures)),
-            updsteRenderingAstronomyPictures(
-              renderingAstronomyPictures.content.id
-            );
+          dispatch(addAstronomyPictures(renderingAllAstronomyPictures)),
+            setRenderingAllAstronomyPictures(!renderingAllAstronomyPictures);
         }}
       >
-        {renderingAstronomyPictures.content.content}
+        {renderingAllAstronomyPictures
+          ? RENDERING_ASTRONOMY_PICTURES_BUTTON.SHOW_ALL
+          : RENDERING_ASTRONOMY_PICTURES_BUTTON.SHOW_MIN}
       </button>
     </div>
   );

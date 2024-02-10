@@ -95,7 +95,7 @@ In the app I used:
 
 Gromko Nadezhda - [@Nadezhda_Gromko_telegram](https://t.me/Nadezhda_Gromko) - nadezhda.kozlovskaya.94@gmail.com
 
-Linkedin: [Nadezhda Gromko](www.linkedin.com/in/nadezhda-gromko)
+Linkedin: [Nadezhda Gromko](https://www.linkedin.com/in/nadezhda-gromko/)
 
 Project Link: [https://github.com/GromkoNadezhda/space_exploration.git](https://github.com/GromkoNadezhda/space_exploration.git)
 
@@ -108,9 +108,9 @@ Project Link: [https://github.com/GromkoNadezhda/space_exploration.git](https://
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Typescriptlang.org]:https://img-b.udemycdn.com/course/750x422/5475052_d3d8_14.jpg
+[Typescriptlang.org]:https://img.shields.io/badge/Typescript-20232A?style=for-the-badge&logo=typescript&logoColor=61DAFB
 [Typescript-url]:https://www.typescriptlang.org/
-[Vitejs.dev]:https://hermes.dio.me/articles/cover/58938d8c-bfc1-436a-a576-683e5332fdc6.png
+[Vitejs.dev]:https://img.shields.io/badge/vite-20232A?style=for-the-badge&logo=vite&logoColor=61DAFB
 [Vite-url]: https://vitejs.dev/
-[Mui.com]:https://mui.com/static/social-previews/home-preview.jpg
+[Mui.com]:https://img.shields.io/badge/mui-20232A?style=for-the-badge&logo=mui&logoColor=61DAFB
 [Mui-url]: https://mui.com/

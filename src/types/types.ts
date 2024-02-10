@@ -7,17 +7,14 @@ export interface IASTRONOMY_PICTURE {
   url: string;
 }
 
-export interface IFILTERING_VALUES {
-  [FILTRATION_TITLE.DATE]: string;
-  [FILTRATION_TITLE.TITLE]: string;
-}
+export type TFILTERING_VALUES = Record<FILTRATION_TITLE, string>;
 
 export interface ISTORE {
   astronomyPictures: {
     astronomyPictures: IASTRONOMY_PICTURE[];
     astronomyPicturesToShow: IASTRONOMY_PICTURE[];
     astronomyPicture: IASTRONOMY_PICTURE;
-    filteringValues: IFILTERING_VALUES;
+    filteringValues: TFILTERING_VALUES;
     sortingType: number;
     loadingStatus: boolean;
     error: {};

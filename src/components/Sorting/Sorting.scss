@@ -1,23 +1,26 @@
 @import "../../style/helpers/variables.scss";
 
-.sorting {
+.btn-sorting {
   display: flex;
   max-width: 120px;
   width: 100%;
   justify-content: space-between;
+  cursor: pointer;
 
   &__icon {
     transform: rotate(90deg);
     border-radius: $radius;
-    border: 1px solid $blue;
-    padding: $paddingSize * 2;
+    border: 2px solid $blue;
+    padding: $paddingSize;
+    color: $white;
+    background-color: inherit;
     cursor: pointer;
   }
 
   &__icon:hover {
     background-color: $purple;
   }
-  
+
   &__text {
     align-self: center;
     font-size: $content-size;

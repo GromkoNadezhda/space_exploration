@@ -4,7 +4,7 @@
   font-size: 45px;
 
   &__button {
-    @include button;
+    @extend %button;
     width: 140px;
     background-color: $primary;
     color: $blue;

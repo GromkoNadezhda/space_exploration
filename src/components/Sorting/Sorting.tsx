@@ -1,26 +1,22 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import SwapHorizIcon from "@mui/icons-material/SwapHoriz";
-import { addSortingType } from "@store/astronomyPicturesSlice";
+import { updateSortingType } from "@store/astronomyPicturesSlice";
+import { selectSortingType } from "@store/selectors";
 import "./Sorting.scss";
 
 export const Sorting = () => {
-  const [sortingType, setSortingType] = useState(1);
+  const sortingType = useSelector(selectSortingType);
 
   const dispatch = useDispatch();
 
-  const updateSortingType = () => dispatch(addSortingType(sortingType));
+  const changeSortingType = () => dispatch(updateSortingType(-sortingType));
 
   return (
-    <div className="sorting">
-      <div
-        onClick={() => {
-          setSortingType(-sortingType), updateSortingType();
-        }}
-      >
-        <SwapHorizIcon className="sorting__icon " />
-      </div>
-      <p className="sorting__text">Sort by date</p>
+    <div className="btn-sorting" >
+      <button className="btn-sorting__icon" onClick={changeSortingType}>
+        <SwapHorizIcon />
+      </button>
+      <span className="btn-sorting__text">Sort by date</span>
     </div>
   );
 };

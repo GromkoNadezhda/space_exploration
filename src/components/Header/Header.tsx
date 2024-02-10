@@ -1,12 +1,9 @@
 import { useSelector } from "react-redux";
-import { IHEADER_CONTENT } from "@types";
+import { selectHeaderContent } from "@store/selectors";
 import "./Header.scss";
 
 export const Header = () => {
-  const headerContent = useSelector(
-    (state: { appSettings: { headerContent: IHEADER_CONTENT } }) =>
-      state.appSettings.headerContent
-  );
+  const headerContent = useSelector(selectHeaderContent);
 
   return (
     <div className="header">

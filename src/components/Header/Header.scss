@@ -1,7 +1,7 @@
 @import "../../style/helpers/variables.scss";
 
 .header {
-  @include basicBlocksSize;
+  @extend %basicBlocksSize;
   display: flex;
   flex-direction: column;
   min-height: fit-content;
