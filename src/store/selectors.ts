@@ -6,7 +6,7 @@ import {
 import { IHEADER_CONTENT, ISTORE } from "@types";
 
 const selectAllAstronomyPictures = (state: ISTORE) =>
-  state.astronomyPictures.astronomyPicturesToShow;
+  state.astronomyPictures.astronomyPictures;
 
 export const selectAstronomyPicture = (state: ISTORE) =>
   state.astronomyPictures.astronomyPicture;
@@ -27,11 +27,10 @@ export const selectHeaderContent = (state: {
 export const selectAstronomyPicturesByFilter = createSelector(
   [selectActiveFilter, selectAllAstronomyPictures],
 
-  (activeFilter, allAstronomyPictures) => {
-   return activeFilter
+  (activeFilter, allAstronomyPictures) =>
+    activeFilter
       ? filteredAstronomyPictures(activeFilter, allAstronomyPictures)
-      : allAstronomyPictures;
-  }
+      : allAstronomyPictures
 );
 
 export const sortedAstronomyPictures = createSelector(

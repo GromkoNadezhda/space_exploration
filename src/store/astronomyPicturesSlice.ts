@@ -1,9 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchAstronomyPicture } from "./thunk";
 import { IASTRONOMY_PICTURE, TFILTERING_VALUES } from "@types";
-import {
-  ITEMS_COUNT,
-} from "@constants/constants";
 
 const INITIAL_STATE: {
   astronomyPictures: IASTRONOMY_PICTURE[];
@@ -25,7 +22,6 @@ const astronomyPicturesSlice = createSlice({
   name: "astronomyPictures",
   initialState: {
     astronomyPictures: INITIAL_STATE.astronomyPictures,
-    astronomyPicturesToShow: INITIAL_STATE.astronomyPictures,
     astronomyPicture: INITIAL_STATE.astronomyPicture,
     filteringValues: INITIAL_STATE.filteringValues,
     sortingType: INITIAL_STATE.sortingType,
@@ -34,14 +30,6 @@ const astronomyPicturesSlice = createSlice({
   },
 
   reducers: {
-    addAstronomyPictures(state, action) {
-      action.payload
-        ? (state.astronomyPicturesToShow = state.astronomyPictures)
-        : (state.astronomyPicturesToShow =
-            state.astronomyPictures.slice(
-              ITEMS_COUNT.MIN_ITEMS_COUNT
-            ));
-    },
     addAstronomyPicture(state, action) {
       state.astronomyPicture = action.payload;
     },
@@ -61,14 +49,10 @@ const astronomyPicturesSlice = createSlice({
       (state.loadingStatus = false), (state.error = null);
       if (Array.isArray(action.payload)) {
         state.astronomyPictures = action.payload;
-        state.astronomyPicturesToShow = action.payload.slice(
-          ITEMS_COUNT.MIN_ITEMS_COUNT
-        );
       } else if (!Array.isArray(action.payload)) {
         state.astronomyPicture = action.payload;
       }
-    }
-    );
+    });
     builder.addCase(fetchAstronomyPicture.rejected, (state, action) => {
       state.loadingStatus = false;
       state.error = action.error;
@@ -76,10 +60,6 @@ const astronomyPicturesSlice = createSlice({
   },
 });
 
-export const {
-  addAstronomyPictures,
-  addAstronomyPicture,
-  addFilteringValues,
-  updateSortingType,
-} = astronomyPicturesSlice.actions;
+export const { addAstronomyPicture, addFilteringValues, updateSortingType } =
+  astronomyPicturesSlice.actions;
 export default astronomyPicturesSlice.reducer;

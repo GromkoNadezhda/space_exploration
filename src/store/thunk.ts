@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const SET_ASTRONOMY_PICTURE = "games/fetchAstronomyPicture";
+const SET_ASTRONOMY_PICTURE = "astronomyPictures/fetchAstronomyPicture";
 
 export const fetchAstronomyPicture = createAsyncThunk(
   SET_ASTRONOMY_PICTURE,

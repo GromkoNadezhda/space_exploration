@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ThunkDispatch } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 import { CircularProgress } from "@mui/material";
 import { fetchAstronomyPicture } from "@store/thunk";
-import { addAstronomyPictures } from "@store/astronomyPicturesSlice";
 import { updateHeaderContent } from "@store/appSettings";
 import { selectLoadingStatus, sortedAstronomyPictures } from "@store/selectors";
 import {
   BASIC_BLOCKS_ID,
+  MIN_ITEMS_COUNT,
   RENDERING_ASTRONOMY_PICTURES_BUTTON,
 } from "@constants/constants";
 import { IASTRONOMY_PICTURE } from "@types";
@@ -32,12 +32,20 @@ export const AstronomyPictures = () => {
   useEffect(() => {
     dispatch(
       fetchAstronomyPicture(
-        " https://api.nasa.gov/planetary/apod?api_key=tH8n33Z1IX9p6dFVlvL1RvaYg8xhjFMQSewTNQYY&start_date=2024-01-01"
+        "https://api.nasa.gov/planetary/apod?api_key=tH8n33Z1IX9p6dFVlvL1RvaYg8xhjFMQSewTNQYY&start_date=2024-01-01"
       )
     );
 
     dispatch(updateHeaderContent(BASIC_BLOCKS_ID.allAstronomyPictures));
   }, []);
+
+  const astronomyRicturesToShow = useMemo(
+    () =>
+      renderingAllAstronomyPictures
+        ? astronomyPictures.slice(0, MIN_ITEMS_COUNT)
+        : astronomyPictures,
+    [astronomyPictures, renderingAllAstronomyPictures]
+  );
 
   return loading ? (
     <CircularProgress />
@@ -48,7 +56,7 @@ export const AstronomyPictures = () => {
         <FiltrationInputs />
       </div>
       <div className="astronomy-pictures__wrapper-card">
-        {astronomyPictures.map(({ date, url, title }) => (
+        {astronomyRicturesToShow.map(({ date, url, title }) => (
           <div
             className="astronomy-pictures__card"
             key={date}
@@ -64,8 +72,7 @@ export const AstronomyPictures = () => {
       <button
         className="astronomy-pictures__button"
         onClick={() => {
-          dispatch(addAstronomyPictures(renderingAllAstronomyPictures)),
-            setRenderingAllAstronomyPictures(!renderingAllAstronomyPictures);
+          setRenderingAllAstronomyPictures(!renderingAllAstronomyPictures);
         }}
       >
         {renderingAllAstronomyPictures

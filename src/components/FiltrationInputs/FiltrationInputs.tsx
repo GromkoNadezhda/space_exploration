@@ -49,7 +49,6 @@ export const FiltrationInputs = () => {
     unactiveId: FILTRATION_TITLE.DATE | FILTRATION_TITLE.TITLE
   ) => {
     if (activeId !== unactiveId) {
-      
       setButtonTheme({
         [activeId]: BUTTON_THEME.active,
         [unactiveId]: BUTTON_THEME.unactive,
@@ -68,9 +67,6 @@ export const FiltrationInputs = () => {
             className={buttonTheme[filtrationTitle]}
             id={filtrationTitle}
             onClick={() => {
-              // setButtonTheme({
-              //   ...buttonTheme,
-              // })
               setSelectInput(filtrationTitle),
                 handleChangeTheme(filtrationTitle, selectInput);
             }}

@@ -52,6 +52,4 @@ export enum RENDERING_ASTRONOMY_PICTURES_BUTTON {
   SHOW_MIN = "Show only nine days",
 }
 
-export enum ITEMS_COUNT {
-  MIN_ITEMS_COUNT = -9,
-}
+export const MIN_ITEMS_COUNT = 9;

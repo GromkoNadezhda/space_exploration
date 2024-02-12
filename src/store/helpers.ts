@@ -19,11 +19,9 @@ export const sortAstronomyPictures = (
   astronomyPictures: IASTRONOMY_PICTURE[],
   sort: number
 ) => {
-  const sortedAstronomyPictures = [...astronomyPictures];
-
   if (!!sort) astronomyPictures;
 
-  return sortedAstronomyPictures.sort(
+  return [...astronomyPictures].sort(
     (a: IASTRONOMY_PICTURE, b: IASTRONOMY_PICTURE) => {
       if (a.date > b.date) return -sort;
 

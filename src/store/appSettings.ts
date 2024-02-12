@@ -7,6 +7,7 @@ const INITIAL_STATE: {
 } = {
   headerContent: HEADER_CONTENT[BASIC_BLOCKS_ID.allAstronomyPictures],
 };
+
 const appSettings = createSlice({
   name: "appSettings",
   initialState: {
